@@ -1,6 +1,8 @@
 from django.urls import path
-from app import views
+from app.views import cadastro_aluno,index,update_aluno
 
 urlpatterns = [
-    path('dashboard', views.dashboard)
+    path('cadastro_aluno',cadastro_aluno, name='cadastro_aluno'),
+    path('editar/<int:pk>/', update_aluno, name='editar_aluno'),
+    path('',index,name="index"),
 ]
