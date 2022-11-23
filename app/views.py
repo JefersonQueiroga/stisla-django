@@ -2,10 +2,17 @@ from django.shortcuts import render
 from app.forms import AlunoForm
 from django.shortcuts import redirect,get_object_or_404
 from app.models import Aluno
-
+from django.core.paginator import Paginator
 
 def index(request):
-    alunos = Aluno.objects.all() 
+    alunos_list = Aluno.objects.all()
+    
+    paginator = Paginator(alunos_list, 5)
+
+    page = request.GET.get('page')
+
+    alunos = paginator.get_page(page)
+
     return render(request,'index.html',{'alunos':alunos})
 
 
