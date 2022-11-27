@@ -9,7 +9,7 @@ class AlunoForm(forms.ModelForm):
         widgets = {
             'minicursos': forms.CheckboxSelectMultiple(),
             'sexo': forms.RadioSelect(),
-            'data_nascimento': forms.TimeInput(attrs={'type': 'date'}),
+            'data_nascimento': forms.DateTimeInput(attrs={'class': 'form-control', 'type': 'datetime-local'}, format='%Y-%m-%dT%H:%M'),
         }
     
     def __init__(self, *args, **kwargs):

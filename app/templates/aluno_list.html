@@ -18,6 +18,18 @@
         <div class="card-header">
           <h4>Lista de Inscritos</h4>
         </div>
+
+        <div class="row">
+            <div class="col-12">
+              <div class="card">
+                <form method="get">
+                    {{ filter.form.as_p }}
+                    <button type="submit">Search</button>
+                </form>
+            </div>
+            </div>
+        </div>        
+
         <div class="row">
             <div class="col-12">
               <div class="card">
@@ -30,19 +42,18 @@
                         <th>Nome</th>
                         <th>Curso</th>
                         <th>E-mail</th>
-                        <th class="col-md-2 center-block">Ações</th>
+                        <th>Ações</th>
                       </tr>
-                      {% for aluno in alunos  %}
+                      {% for aluno in filter.qs  %}
                         <tr>
                           <td>{{ forloop.counter }}</td>
                           <td>{{ aluno.nome }}</td>
                           <td>{{ aluno.curso.nome }}</td>
                           <td> {{ aluno.email }} </td>
-                          <td class="col-md-2 center-block text-center">
+                          <td>
                             <a href="{% url 'editar_aluno'  aluno.id %}" class="btn btn-primary">Editar</a>
-                            <a href="{% url 'remover_aluno'  aluno.id %}" class="btn btn-danger">Remover</a>
-                            
-                            </td>
+                            <a href="{% url 'editar_aluno'  aluno.id %}" class="btn btn-danger">Editar</a>
+                        </td>
                         </tr>
                       {% endfor %}
                     </table>

@@ -1,6 +1,4 @@
 {% load static %}
-{% load sweetify %}
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -30,9 +28,9 @@
 
       {% include 'includes/header.html' %}
       {% include 'includes/sidebar.html' %}
+      
       <div class="main-content">
         {% block content %}
-          {% sweetify %}
         {% endblock content %}
       </div>
       {% include 'includes/footer.html' %}
@@ -40,6 +38,8 @@
   </div>
 
   <!-- General JS Scripts -->
+  <script src="{% static 'sweetify/sweetify.js' %}"></script>
+
   <script src="https://code.jquery.com/jquery-3.3.1.min.js"
     integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
@@ -50,13 +50,19 @@
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.9/sweetalert2.min.js"></script>
+
   <script src="{% static 'assets/js/stisla.js' %}"></script>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
 
   <!-- Template JS File -->
   <script src="{% static 'assets/js/scripts.js' %}"></script>
   <script src="{% static 'assets/js/custom.js' %}"></script>
-
+  {% load sweetify %}
+  {% sweetify %}
   <!-- Page Specific JS File -->
   <!-- <script src="{% static 'assets/js/page/index-0.js' %}"></script> -->
   <!-- <script src="{% static 'assets/js/page/bootstrap.modal.js' %}"></script> -->
