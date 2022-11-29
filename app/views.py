@@ -33,15 +33,13 @@ def update_aluno(request, pk):
         sweetify.sweetalert(request,'Aluno alterado com Sucesso!')
         return redirect('index')
     
-
     return render(request, "cadastro_aluno.html", {'form':form})
 
 
 def remover_aluno(request, pk):
     aluno= get_object_or_404(Aluno, pk=pk)
     aluno.delete()
-    alunos = Aluno.objects.all()
-    return render(request, "index.html", {'alunos': alunos})
+    return redirect('index')
 
 
 class AboutView(TemplateView):
