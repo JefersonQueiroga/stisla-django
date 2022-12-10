@@ -5,7 +5,10 @@ from app.models import Aluno
 from django.views.generic import TemplateView,ListView
 from .filters import AlunoFilter
 import sweetify
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 
+@login_required
 def index(request):
     alunos = Aluno.objects.all()
     return render(request,'index.html',{'alunos':alunos})
@@ -25,6 +28,7 @@ def cadastro_aluno(request):
     return render(request, 'cadastro_aluno.html',{ 'form' : form})
 
 
+@login_required
 def update_aluno(request, pk):
     aluno= get_object_or_404(Aluno, pk=pk)
     form = AlunoForm(request.POST or None, instance=aluno)
@@ -35,12 +39,16 @@ def update_aluno(request, pk):
     
     return render(request, "cadastro_aluno.html", {'form':form})
 
-
+@login_required
 def remover_aluno(request, pk):
     aluno= get_object_or_404(Aluno, pk=pk)
     aluno.delete()
     return redirect('index')
 
+
+def logout_aplicacao(request):
+     logout(request)
+     return redirect('login')
 
 class AboutView(TemplateView):
     template_name = "quemsomos.html"

@@ -141,3 +141,5 @@ sweetify.DEFAULT_OPTS = {
         
     }
 }
+
+LOGIN_REDIRECT_URL='index'
